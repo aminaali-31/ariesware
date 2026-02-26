@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="/static/form.css">
+    <link rel="stylesheet" href="/static/vendor/intlTelInput.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <%- include('head') %>
+</head>
+
+<body>
+    <main>
+        <%- include('nev') %>
+        <h1>Get In Touch</h1>
+        <% if (messages && messages.length > 0) { %>
+        <% messages.forEach(msg => { %>
+            <script>
+                Swal.fire({
+                    icon: "success",
+                    title: "Done!",
+                    text: "<%= msg %>"
+                });
+            </script>
+        <% }) %>
+    <% } %>
+        <div class="contents">
+        <div class="details">
+        <h2>Let's Discuss Your Project</h2>
+        <p>We understand what matters to you and create solutions designed for your goals. </p>
+        <p>Share your details, and one of our experts will reach out to connect at a convenient time.</p>
+        </div>
+        <form action="/send-mail" method="POST" class="contact">
+            <label>Name:</label>
+            <input type="text" name="name" placeholder="Enter your name">
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="Enter your email">
+            <label>Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Phone number">
+            <p>Select the services you are looking for:</p>
+            <label class="checkbox-option">
+            <input type="checkbox" name="service" value="GenAI">
+            <span>Generative AI</span>
+            </label>
+
+            <label class="checkbox-option">
+            <input type="checkbox" name="service" value="WebDev">
+            <span>Web Development</span>
+            </label>
+
+            <label class="checkbox-option">
+            <input type="checkbox" name="service" value="WebDes">
+            <span>Web Design</span>
+            </label>
+
+            <label class="checkbox-option">
+            <input type="checkbox" name="service" value="App">
+            <span>App Development</span>
+            </label>
+
+            <label class="checkbox-option">
+            <input type="checkbox" name="service" value="UIUX">
+            <span>UI/UX Design</span>
+            </label>
+
+            <label class="checkbox-option">
+            <input type="checkbox" name="service" value="IoT">
+            <span>IoT Development</span>
+            </label>
+
+            <label class="checkbox-option">
+            <input type="checkbox" name="service" value="ML">
+            <span>Machine Learning</span>
+            </label>
+
+            <label class="checkbox-option">
+            <input type="checkbox" name="service" value="Writing">
+            <span>Content Writing</span>
+            </label>
+
+            <label class="checkbox-option">
+            <input type="checkbox" name="service" value="Other">
+            <span>Other</span>
+            </label>
+
+            <label>Project Details:</label>
+            <textarea name="message" placeholder="Enter your message"></textarea>
+            <button type="submit" id="contact">Submit</button>
+        </form>
+        </div>
+    </main>
+    <%- include('foot') %>
+<script src="/static/vendor/intlTelInput.min.js"></script>
+<script src="/static/vendor/utils.js"></script>
+
+<script>
+  const input = document.querySelector("#phone");
+
+  window.intlTelInput(input, {
+    initialCountry: "pk",   // default Pakistan
+    separateDialCode: true, // shows code separately like your screenshot
+    preferredCountries: ["pk", "sa", "ae", "us", "gb"],
+  });
+</script>
+
+</body>
+
+</html>

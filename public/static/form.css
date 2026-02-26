@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+main {
+    background-color: #111827;
+    min-height: 80vh;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.contents {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+}
+.details {
+     color: #ffffff;
+     margin: 30px;
+}
+.details h2 {
+     font-size: 50px;
+     padding: 5px;
+}
+.details p {
+    font-size: 20px;
+    line-height: 35px;
+}
+.contact-item {
+    padding: 10px;
+    font-size: 18px;
+}
+main h1 {
+    color: #eef5f5;
+    font-size: 45px;
+    padding: 10px;
+    text-align: center;
+}
+.contact {
+    min-height: 500px;
+    width: 500px;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin: 30px;
+}
+.checkbox-option{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  height: 20px;
+}
+.checkbox-option span {
+    font-size: 17px;
+}
+.contact input {
+    background-color: #bcbebe3f;
+    border: none;
+    border-bottom: 1px solid black;
+    min-height: 40px;
+    margin: 10px 0px;
+}
+input[type="tel"] {
+    width: 100%;
+    padding-left: 100px !important;
+}
+.contact p {
+    margin: 10px 0;
+}
+.contact input::placeholder {
+    padding: 10px;
+    font-size: 15px;
+}
+.contact label {
+    font-size: 20px;
+    color: #111827;
+    margin: 5px;
+}
+.contact textarea {
+    background-color: #bcbebe3f;
+    border: none;
+    border-bottom: 1px solid black;
+    min-height: 70px;
+    margin: 5px 0px;
+    font-size: 15px;
+    padding: 10px;
+}
+#contact:hover{
+    color:#111827
+}
