@@ -40,6 +40,9 @@ app.get('/services', (req,res) => {
   res.render('service');
 })
 
+app.get('/why', (req,res) =>{
+  res.render('why');
+})
 app.post('/send-mail', async (req, res) => {
   const { name, email, phone, message } = req.body;
   

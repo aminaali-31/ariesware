@@ -202,6 +202,7 @@ button:hover {
   align-items: center;
   padding: 50px;
   color: #eef5f5;
+  overflow: auto;
 }
 
 .services h1 {
@@ -341,19 +342,53 @@ hr {
   min-height: 60vh;
   position: relative;
   z-index: 1;
+  text-align: center;
+  padding: 60px 5px;
+}
+.reviews {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 30px;
+  scroll-behavior: smooth;
+  padding: 60px 30px;
+  align-items: center;
+}
+.reviews::-webkit-scrollbar {
+  display: none;
+}
+
+.reviews {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .Why h1 {
-  text-align: center;
   padding: 30px;
   font-size: 50px;
 }
 
 #desc {
-  text-align: center;
   font-size: 25px;
 }
 
+#why {
+  background-color:rgba(255, 255, 255, 0.142);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  margin: 30px;
+}
+#why h2 {
+  font-size: 40px;
+  padding:10px 5px;
+}
+#why p {
+  font-size: 20px;
+  width: 70%;
+  padding: 10px 5px;
+  font-weight: 300;
+}
 .metrics {
   display: flex;
   gap: 20px;
@@ -399,7 +434,64 @@ hr {
 #cont {
   width: 40%;
 }
+.box {
+  background-color: rgba(255, 255, 255, 0.142);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  text-align: center;
+  gap:10px;
+  height:300px;
+  transition: 0.5s ease-in-out;
+}
+.quote-card {
+  position: relative;
+  border: 1px solid #2a2a2a;
+  border-radius: 30px;
+  padding: 60px 50px;
+  max-width: 900px;
+  margin: 100px 0;
+  flex-shrink: 0;
+}
 
+.quote-card p {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #ccc;
+}
+.caption {
+  position: absolute;
+  left: 20;
+}
+/* Floating quote circle */
+.quote-icon {
+  position: absolute;
+  top: -75px;              /* Moves icon outside border */
+  right: 40px;             /* Adjust horizontally */
+  width: 8em;
+  height: 8em;
+  background: #19b2a6;     /* Teal color */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box:hover {
+  background-color: #0097b2;
+}
+.box h3{
+  font-size: 25px;
+}
+.box p {
+  font-size: 17px;
+  font-weight: 300;
+}
 #cont h1 {
   font-size: 50px;
   margin-bottom: 10px;
@@ -412,7 +504,16 @@ hr {
   font-size: 25px;
   margin-bottom: 10px;
 }
-
+#cta {
+  background-color: rgba(255, 255, 255, 0.107);
+  backdrop-filter: blur(20px);
+  padding: 60px 30px;
+  border-radius: 10px;
+}
+#cta h3 {
+  font-size: 35px;
+  color:white;
+}
 .insights {
   display: grid;
   grid-template-columns: repeat(3, 200px);
@@ -700,7 +801,10 @@ footer.footer {
     flex-direction: column;
     align-items: flex-start;
   }
-
+  .quote-icon {
+    width: 7em;
+    height: 7em;
+  }
   .footer-contact {
     border-left: none;
     padding-left: 0;
@@ -716,12 +820,20 @@ footer.footer {
   #blogs {
     grid-template-columns: 1fr;
   }
-
+  #cta  h3{
+    font-size: 30px;
+  }
   .insight {
     width: 100%;
     height: 350px;
   }
-
+  #why h2 {
+    font-size: 35px;
+    margin-top: 50%;
+  }
+  #why p{
+    width: 100%;
+  }
   .col.side {
     display: none;
   }
