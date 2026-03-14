@@ -29,6 +29,18 @@ app.use((req, res, next) => {
   next();
 });
 
+
+// Create transporter
+const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    secure: true, // true if using port 465
+    auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+    }
+});
+
 app.get("/", (req, res) => {
   res.render('index');
 });
@@ -44,63 +56,52 @@ app.get('/why', (req,res) =>{
   res.render('why');
 })
 app.post('/send-mail', async (req, res) => {
-  const { name, email, phone, message } = req.body;
-  
-  // Checkboxes: req.body.service can be a string (one selected) or array (multiple)
-  let services = req.body.service || [];
-  if (!Array.isArray(services)) {
-    services = [services];
-  }
+    const { name, email, phone, message } = req.body;
 
-  // Basic validation
-  if (!name || !email || !message || !phone) {
-    req.session.messages = ['All fields are required'];
-    return res.redirect('/contact');
-  }
+    let services = req.body.service || [];
+    if (!Array.isArray(services)) services = [services];
 
-  try {
-    // Now you can pass phone and services to your email function
-    await sendEmail(name, email, message, phone, services);
-    req.session.messages = ['Message sent successfully! You will be contacted soon.'];
-    res.redirect('/contact');
-  } catch (error) {
-    console.error('Email error:', error);
-    req.session.messages = ['Something went wrong. Please try again later.'];
-    res.redirect('/contact');
-  }
-});
-
-async function sendEmail(name, senderEmail, message, phone, services) {
-  const EMAIL_ADDRESS = process.env.EMAIL;
-  const EMAIL_PASSWORD = process.env.PASSWORD;
-
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: EMAIL_ADDRESS,
-      pass: EMAIL_PASSWORD
+    if (!name || !email || !message || !phone) {
+        req.session.messages = ['All fields are required'];
+        return res.redirect('/contact');
     }
-  });
 
-  const mailOptions = {
-    from: EMAIL_ADDRESS,
-    to: EMAIL_ADDRESS,
-    subject: 'New Contact Form Message',
-    text: `
-Name: ${name}
-Email: ${senderEmail}
-Phone: ${phone}
-Services Interested In: ${services.join(', ')}
+    const success = await sendEmail(name, email, message, phone, services);
 
-Message:
-${message}
-    `
-  };
+    if (success) {
+        req.session.messages = ['Message sent successfully! You will be contacted soon.'];
+    } else {
+        req.session.messages = ['Something went wrong. Please try again later.'];
+    }
 
-  return transporter.sendMail(mailOptions);
+    res.redirect('/contact');
+});
+async function sendEmail(name, senderEmail, message, phone, services) {
+    try {
+        const mailOptions = {
+            from: `"Website Contact Form" <mail.ariesware.com>`, // use your domain email
+            to: "amnaali@ariesware.com", // your email where you want to receive submissions
+            replyTo: senderEmail, // so you can reply directly to the user
+            subject: 'New Contact Form Message',
+            text: `
+              Name: ${name}
+              Email: ${senderEmail}
+              Phone: ${phone}
+              Services Interested In: ${services.join(', ')}
+
+              Message:
+              ${message}
+                          `
+        };
+
+        let info = await transporter.sendMail(mailOptions);
+        console.log('Email sent: %s', info.messageId);
+        return true;
+    } catch (err) {
+        console.error('Error sending email:', err);
+        return false;
+    }
 }
-
-
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

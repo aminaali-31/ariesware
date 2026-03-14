@@ -9,6 +9,10 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 90vh;
         }
         .main::after {
             background: linear-gradient(to top,
@@ -30,10 +34,10 @@
 <body>
     <section class="main">
         <%- include('nev') %>
-        <div class="content">
-            <h1>Our Expertise</h1>
+        <div id="why">
+            <h2>Crafting Digital Experiences</h2>
             <p>Providing reliable, high-quality solutions tailored to your needs</p>
-            <button>Book a Call</button>
+            <button onclick="window.location.href = '/contact'">Book a Call</button>
         </div>
     </section>
     <section class="explan">
