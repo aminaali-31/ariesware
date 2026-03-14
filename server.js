@@ -79,8 +79,8 @@ app.post('/send-mail', async (req, res) => {
 async function sendEmail(name, senderEmail, message, phone, services) {
     try {
         const mailOptions = {
-            from: `"Website Contact Form" <mail.ariesware.com>`, // use your domain email
-            to: "amnaali@ariesware.com", // your email where you want to receive submissions
+            from: `"Website Contact Form" <amnaali@ariesware.com>`, // use your domain email
+            to: "amina.ali.31032008@.com", // your email where you want to receive submissions
             replyTo: senderEmail, // so you can reply directly to the user
             subject: 'New Contact Form Message',
             text: `
