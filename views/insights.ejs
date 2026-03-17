@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Services We Offer</title>
+    <%- include('head') %>
+        <style>
+            /* ===== GLOBAL ===== */
+            body {
+                margin: 0;
+                font-family: 'Segoe UI', sans-serif;
+                background: #0a0f1c;
+                color: #e6edf3;
+            }
+
+            /* ===== HERO ===== */
+            .main {
+                background: url('/static/images/earth2.jpg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-height: 90vh;
+            }
+
+            .main::after {
+                background: linear-gradient(to top,
+                        rgba(33, 33, 33, 0.7),
+                        transparent 60%);
+                content: "";
+                position: absolute;
+                inset: 0;
+            }
+
+            /* ===== SECTION ===== */
+            .section {
+                padding: 60px 8%;
+            }
+
+            .section h2 {
+                margin-bottom: 25px;
+                border-left: 4px solid #19b2a6;
+                padding-left: 10px;
+            }
+
+            /* ===== STATS ===== */
+            .stats {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 20px;
+            }
+
+            .stat-card {
+                background: #111827;
+                padding: 25px;
+                border-radius: 12px;
+                text-align: center;
+                border: 1px solid #1f2a44;
+            }
+
+            .stat-card h3 {
+                font-size: 28px;
+                color: #19b2a6;
+                margin: 0;
+            }
+
+            .stat-card p {
+                margin: 5px 0 0;
+                color: #9fb3c8;
+            }
+
+            /* ===== INSIGHTS CARDS ===== */
+            .cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 20px;
+            }
+
+            .insight {
+                height: 300px;
+                border-radius: 8px;
+                border: 1px solid #1f2a44;
+            }
+
+            /* ===== LESSONS ===== */
+            .lessons {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .lesson {
+                background: #111827;
+                padding: 15px 20px;
+                border-left: 4px solid #19b2a6;
+                border-radius: 6px;
+            }
+
+            /* ===== CHALLENGES ===== */
+            .challenge {
+                background: #111827;
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #1f2a44;
+            }
+
+            .challenge h4 {
+                margin-top: 0;
+                color: #19b2a6;
+            }
+
+            .challenge p {
+                color: #9fb3c8;
+            }
+
+            /* ===== RESPONSIVE ===== */
+            @media (max-width: 768px) {
+                .hero h1 {
+                    font-size: 28px;
+                }
+            }
+        </style>
+</head>
+
+<body>
+
+    <section class="main">
+        <%- include('nev') %>
+            <div id="why">
+                <h2>Insights & Transformations</h2>
+                <p>Our journey, challenges, and technical growth</p>
+            </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="section">
+        <h2>Overview</h2>
+        <div class="stats">
+            <div class="stat-card">
+                <h3>20+</h3>
+                <p>Projects</p>
+            </div>
+            <div class="stat-card">
+                <h3>10+</h3>
+                <p>Technologies</p>
+            </div>
+            <div class="stat-card">
+                <h3>500+</h3>
+                <p>Hours Coding</p>
+            </div>
+            <div class="stat-card">
+                <h3>100+</h3>
+                <p>Bugs Solved</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECT INSIGHTS ===== -->
+    <section class="section">
+        <h2>Project Insights</h2>
+        <div class="cards">
+
+            <a href="https://github.com/aminaali-31/Solar-monitoring-app" target="_blank" class="project-link">
+                <div class="insight">
+                    <img src="/static/images/solar.png">
+                    <h5>Solar-Monitoring-App</h5>
+                    <p>Real-time solar monitoring system</p>
+                </div>
+            </a>
+
+            <a href="https://github.com/aminaali-31/quotation_app" target="_blank" class="project-link">
+                <div class="insight">
+                    <img src="/static/images/quote.png">
+                    <h5>Quotation Maker App</h5>
+                    <p>Web app made for generateing solar quotations easily</p>
+                </div>
+            </a>
+
+            <a href="https://github.com/aminaali-31/Travel-Node" target="_blank" class="project-link">
+                <div class="insight">
+                    <img src="/static/images/travel.png">
+                    <h5>Travel Website</h5>
+                    <p>Static travel agency website with beautiful visuals</p>
+                </div>
+            </a>
+
+            <a href="https://github.com/aminaali-31/StudyMate-Offline" target="_blank" class="project-link">
+                <div class="insight">
+                    <img src="/static/images/bot.jpg">
+                    <h5>AI Study Mate</h5>
+                    <p>Offline AI based study bot made for help during study</p>
+                </div>
+            </a>
+        </div>
+
+    </section>
+
+    <!-- ===== LESSONS ===== -->
+    <section class="section">
+        <h2>Lessons Learned</h2>
+        <div class="lessons">
+            <div class="lesson">Good database design saves hours of debugging later.</div>
+            <div class="lesson">Client requirements change more than code.</div>
+            <div class="lesson">UI/UX matters as much as backend logic.</div>
+            <div class="lesson">Debugging is where real learning happens.</div>
+        </div>
+    </section>
+
+    <!-- ===== CHALLENGES ===== -->
+    <section class="section">
+        <h2>Challenges & Solutions</h2>
+
+        <div class="challenge">
+            <h4>Email going to spam</h4>
+            <p>Fixed by properly configuring SMTP and using domain-based email authentication.</p>
+        </div>
+
+        <div class="challenge">
+            <h4>Speech recognition not triggering</h4>
+            <p>Resolved browser permission and event handling issues.</p>
+        </div>
+
+        <div class="challenge">
+            <h4>Async bugs in Node.js</h4>
+            <p>Learned proper async/await handling and error control.</p>
+        </div>
+
+    </section>
+    <%- include('foot') %>
+</body>
+
+</html>

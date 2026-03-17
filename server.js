@@ -55,6 +55,9 @@ app.get('/services', (req,res) => {
 app.get('/why', (req,res) =>{
   res.render('why');
 })
+app.get('/insights', (req,res)=>{
+  res.render('insights');
+})
 app.post('/send-mail', async (req, res) => {
     const { name, email, phone, message } = req.body;
 

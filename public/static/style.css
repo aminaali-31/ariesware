@@ -560,25 +560,47 @@ hr {
 }
 
 .insight img {
-  width: 100%;
-  height: 100%;
-  position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
+
+/* 🔥 Dark overlay */
+.insight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.324);
+    z-index: 1;
+}
+
 
 .insight h5 {
   position: absolute;
   top: 10px;
   left: 10px;
-  color: black;
+  color:white;
+  font-weight: 300;
   font-size: 17px;
   font-weight: 400;
+  z-index: 2;
 }
 
+.insight:hover::after {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.insight:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+}
 .insight p {
   position: absolute;
   top: 50px;
   left: 10px;
-  color: black;
+  color: white;
+  z-index: 2;
 }
 
 .blogs-sec {
@@ -835,7 +857,6 @@ footer.footer {
   }
   #why h2 {
     font-size: 35px;
-    margin-top: 50%;
   }
   #why p{
     width: 100%;
